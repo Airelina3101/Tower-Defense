@@ -36,7 +36,21 @@ public class MoveEnemy : MonoBehaviour
             else
             {
                 Destroy(gameObject);
+                GameManagerBehavior gameManager = GameObject.Find("GameManager").GetComponent<GameManagerBehavior>();
+                gameManager.Health -= 1;
             }
         }
+    }
+    public float DistanceToAim()
+    {
+        float distance = 0;
+        distance += Vector3.Distance(gameObject.transform.position, WayPoints[_currentWayPoint + 1].transform.position);
+        for (int i = _currentWayPoint + 1; i<WayPoints.Length - 1; i++)
+        {
+            Vector3 startPosition = WayPoints[i].transform.position;
+            Vector3 endPosition = WayPoints[i].transform.position;
+            distance += Vector3.Distance(startPosition, endPosition);
+        }
+        return distance;
     }
 }
