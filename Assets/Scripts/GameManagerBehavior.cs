@@ -1,15 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManagerBehavior : MonoBehaviour
-{
-    public Text ScoreLabel;
+{   
     public Text HealthLabel;
+    public Text MoneyLabel;
     public GameObject EndGame;
 
     private int _health;
+    private int _money;
     public int Health
     {
         get
@@ -23,20 +22,25 @@ public class GameManagerBehavior : MonoBehaviour
             if (_health<=0)
             {
                 Time.timeScale = 0;
-                Debug.Log("Game over");
                 EndGame.SetActive(!EndGame.activeSelf);
             }
         }
     }
-    // Start is called before the first frame update
+    public int Money
+    {
+        get
+        {
+            return _money;
+        }
+        set
+        {
+            _money = value;
+            MoneyLabel.text = "Money: " + _money;
+        }
+    }
     void Start()
     {
         Health = 10;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Money = 1000;
     }
 }

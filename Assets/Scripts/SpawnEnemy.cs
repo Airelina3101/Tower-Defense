@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
 {
@@ -10,9 +8,6 @@ public class SpawnEnemy : MonoBehaviour
     public int CountEnemies = 10;
 
     private float _timer;    
-    private void Start()
-    {
-    }
     private void Update()
     {
         _timer -= Time.deltaTime;

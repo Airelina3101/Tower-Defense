@@ -1,18 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class ShootEnemies : MonoBehaviour
 {
     public List<GameObject> EnemiesInRange;
     public GameObject BulletPrefab;
+    public float FireRate = 1;
 
     private float _lastShootTime;
-    // Start is called before the first frame update
     void Start()
     {
         EnemiesInRange = new List<GameObject>(); 
-        Debug.Log(EnemiesInRange);
         _lastShootTime = Time.time;
     }
 
@@ -31,7 +29,11 @@ public class ShootEnemies : MonoBehaviour
         }
         if (target!=null)
         {
-            Shoot(target.GetComponent<Collider>());
+            if (Time.time - _lastShootTime > FireRate)
+            {
+                Shoot(target.GetComponent<Collider>());
+                _lastShootTime = Time.time;
+            }
         }
     }
     void OnEnemyDestroy(GameObject enemy)

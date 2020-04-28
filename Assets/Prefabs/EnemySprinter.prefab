@@ -389,7 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WayPoints: []
-  SpeedEnemy: 2
+  SpeedEnemy: 5
 --- !u!114 &5036129810178469324
 MonoBehaviour:
   m_ObjectHideFlags: 0

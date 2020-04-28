@@ -1,34 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
 
 public class PlaceForTower : MonoBehaviour
 {
     public GameObject TowerPrefab;
 
     private GameObject _tower;
-    // Start is called before the first frame update
+    private GameManagerBehavior _gameManager;
     void Start()
     {
-        
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManagerBehavior>();
     }
 
     private bool CanPlaceTower()
     {
-        return _tower = null;
+        return _tower == null;
     }
-    public void OnMouseUp()
+    void OnMouseUp()
     {
-        if (!CanPlaceTower())
+        if (CanPlaceTower() && (_gameManager.Money-300>0))
         {
-            _tower = (GameObject)
-                Instantiate(TowerPrefab, transform.position, Quaternion.identity);
+            _gameManager.Money -= 300;
+            _tower = (GameObject)Instantiate(TowerPrefab, transform.position, Quaternion.identity);
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
